@@ -1,6 +1,8 @@
 /***
-Projet :cenforosc asbl
-Affinitic, avril 2012
+Projet :vie-esem asbl
+Affinitic, novembre 2015
+
+rouge bg : #c64d4d;
 ***/
 @font-face {
 font-family:'PT Sans Narrow';
@@ -18,7 +20,7 @@ height:100%;
 body{
 background-image:url(images/bg_main.gif);
 background-repeat:repeat-x;
-background-color:#d6d2d3;
+background-color:#fff;
 background-position:left 100px;
 }
 
@@ -44,24 +46,27 @@ min-height:720px;
 margin:auto;
 border-left:2px solid #ddd;
 border-right:2px solid #ddd;
+background-color:rgba(250,250,250,1)
 }
 
 
 /*** HEADER ***/
 #header{
-height:500px;
+height:491px;
 background-image:url(images/banner_sup.png);
 background-repeat:no-repeat;
-background-position:center 150px;
+background-position:center 100px;
 }
 
 #logo{
-width:326px;
-height:105px;
+width:230px;
+height:57px;
 background-image:url(images/logo.png);
 background-repeat:no-repeat;
 float:left;
-margin-top:30px;
+margin-top:5px;
+margin-left:5px;
+border-radius:0px 6px 0px 3px;
 }
 
 #logo a{
@@ -72,10 +77,12 @@ height:105px;
 
 #tools{
 float:right;
-margin-top:20px;
+margin-top:5px;
 margin-right:5px;
-width:500px;
-border:1px solid #000;
+width:370px;
+border:1px solid #ccc;
+border-radius:0px 6px 0px 3px;
+background-color:#ddd;
 }
 
 #site-action{
@@ -122,17 +129,18 @@ padding-bottom: 0.5em;
 /*** MOTEUR RECHERCHE ***/
 #search-plone{
 float:right;
-margin-top:4px;
+margin-top:-5px;
+margin-right:46px;
 text-align:center;
 color:#000;
 font-size:0.8em;
 z-index:3;
 background-color:#ddd;
-border:3px solid #ddd;
-border-radius:5px;
-width:250px;
-height:24px;
-padding:0px 0px 0px 0px;
+border:1px solid #ccc;
+border-radius:0px 6px 0px 3px;
+width:260px;
+height:26px;
+padding:4px 0px 0px 0px;
 }
 
 #search-plone .searchButton{
@@ -369,41 +377,34 @@ color:#8d010f !important;
 /*** FOOTER & COLOPHON ***/
 /*** SITE-FOOTER ***/
 #footer-static {
-position:relative;
-top:2px;
-z-index:12;
-border-radius:0px 0px 12px 12px;
-margin-top:10px;
-background-color:rgba(202,169,117,0.7);
-background-image:url(images/bg_footer.png);
-background-repeat:repeat-x;
+background-color:#c64d4d;
 height:119px;
 text-align:left;
 font-size:0.!em;
 }
-
-#footer-logo{
-width:202px;
-height:55px;
-background-image:url(images/logo-footer.png);
-background-repeat:no-repeat;
-float:left;
-margin-top:60px;
-margin-left:20px;
+#wrapper-footer{
+width:990px;
+margin:auto;
 }
 
+#footer-logo,
 #footer-coordonnee{
-width:202px;
 float:left;
 margin-top:12px;
 margin-left:30px;
 }
 
+#footer-coordonnee{
+width:202px;
+}
+
+#footer-logo h5,
 #footer-coordonnee h5{
 font-size:0.7em;
 color:#eee;
 }
 
+#footer-logo p,
 #footer-coordonnee p{
 font-size:0.7em;
 color:#333;
@@ -427,7 +428,7 @@ text-shadow:1px 1px 1px rgba(255, 255, 255, 0.8);
 /* COLOPHON */
 #colophon{
 margin-top:5px;
-border-top:1px solid #896555;
+border-top:1px dotted rgba(200,200,200,0.8);
 }
 
 #plone,
@@ -435,7 +436,7 @@ border-top:1px solid #896555;
 color:#371b0c;
 text-shadow:1px 1px 1px rgba(255, 255, 255, 0.8);
 font-size:0.6em;
-width:300px;
+width:120px;
 padding-top:2px;
 text-align:center;
 }
@@ -812,7 +813,7 @@ padding:1em;
 /*** PLONE ***/
 #content h1{
 color:#7d7d7d;
-border-bottom:2px solid #e60000;
+border-bottom:2px solid #c64d4d;
 }
 
 #visual-portal-wrapper{
