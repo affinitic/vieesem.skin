@@ -79,10 +79,10 @@ height:105px;
 float:right;
 margin-top:5px;
 margin-right:5px;
-width:370px;
-border:1px solid #ccc;
+width:390px;
+border:1px solid #ddd;
 border-radius:0px 6px 0px 3px;
-background-color:#ddd;
+background-color:rgba(244,244,244,1);
 }
 
 #site-action{
@@ -135,8 +135,8 @@ text-align:center;
 color:#000;
 font-size:0.8em;
 z-index:3;
-background-color:#ddd;
-border:1px solid #ccc;
+background-color:rgba(244,244,244,1);
+border:1px solid #ddd;
 border-radius:0px 6px 0px 3px;
 width:260px;
 height:26px;
