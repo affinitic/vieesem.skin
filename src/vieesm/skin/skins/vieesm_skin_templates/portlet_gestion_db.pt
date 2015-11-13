@@ -1,0 +1,213 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+<div metal:define-macro="portlet"
+     tal:condition="python:user.has_role(['Manager', 'Site Administrator'], here)">
+    <dl id="portlet-gestion-db">
+        <dt class="portletHeaderDB">
+            <span class="portletTopLeft"></span>
+            <span class="portletTopRight"></span>
+            Gestion de la DB
+        </dt>
+        <div class="portletItemDB">
+            <dt class="menu-titre">
+                &#10023; Les formations
+            </dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-formation"
+                       class="lien-menu-gestiondb">
+                       &#10147; Chercher les formations
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-ajouter-une-formation"
+                       class="lien-menu-gestiondb">
+                       &#10147; Ajouter une formation
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-formation"
+                       class="lien-menu-gestiondb">
+                       &#10147; Modifier une formation
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-lister-les-formations"
+                       class="lien-menu-gestiondb">
+                       &#10147; Lister les formations
+                    </a>
+                </dd>
+            <div class="separation"></div>
+
+            <dt class="menu-titre">
+                &#10023; Les inscriptions
+            </dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-inscription"
+                       class="lien-menu-gestiondb">
+                       &#10147; Chercher une inscription
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-lister-les-inscriptions"
+                       class="lien-menu-gestiondb">
+                       &#10147; Lister les inscriptions
+                    </a>
+                </dd>
+
+
+            <div class="separation"></div>
+
+            <dt class="menu-titre">
+                &#10023; Les ouvrages
+            </dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre"
+                       class="lien-menu-gestiondb">
+                        &#10147; Chercher un ouvrage
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-ajouter-un-livre"
+                       class="lien-menu-gestiondb">
+                        &#10147; Ajouter un ouvrage
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre"
+                       class="lien-menu-gestiondb">
+                        &#10147; Modifier un ouvrage
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-titres-des-livres"
+                       class="lien-menu-gestiondb">
+                        &#10147; Lister les ouvrages
+                    </a>
+                </dd>
+
+            <div class="separation"></div>
+
+            <dt class="menu-titre">
+                &#10023; Les périodiquess
+            </dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-chercher-un-periodique"
+                       class="lien-menu-gestiondb">
+                        &#10147; Chercher un périodique
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-ajouter-un-periodique"
+                       class="lien-menu-gestiondb">
+                        &#10147; Ajouter un périodique
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-modifier-un-periodique"
+                       class="lien-menu-gestiondb">
+                        &#10147; Modifier un périodique
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-lister-les-periodiques"
+                       class="lien-menu-gestiondb">
+                        &#10147; Lister les périodiques
+                    </a>
+                </dd>
+
+            <div class="separation"></div>
+
+                <dt class="menu-titre">
+                    &#10023; Les affiches
+                </dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-chercher-une-affiche"
+                       class="lien-menu-gestiondb">
+                        &#10147; Chercher une affiche
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-ajouter-une-affiche"
+                       class="lien-menu-gestiondb">
+                        &#10147; Ajouter une affiche
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-chercher-une-affiche"
+                       class="lien-menu-gestiondb">
+                        &#10147; Modifier une affiche
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-lister-les-affiches"
+                       class="lien-menu-gestiondb">
+                        &#10147; Lister une affiche
+                    </a>
+                </dd>
+
+            <div class="separation"></div>
+
+                <dt class="menu-titre">
+                    &#10023; Les auteurs
+                </dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-chercher-un-auteur"
+                       class="lien-menu-gestiondb">
+                        &#10147; Chercher un auteur
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-ajouter-un-auteur"
+                       class="lien-menu-gestiondb">
+                        &#10147; Ajouter un auteur
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-chercher-un-auteur"
+                       class="lien-menu-gestiondb">
+                        &#10147; Modifier un auteur
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-lister-les-auteurs"
+                       class="lien-menu-gestiondb">
+                        &#10147; Lister les auteurs
+                    </a>
+                    <span class="portlet-gestion-db-separation"></span>
+                </dd>
+
+            <div class="separation"></div>
+
+        <dt class="portletFooterDB">
+            <span class="portletBottomLeft"></span>
+            <span class="portletBottomRight"></span>
+        </dt>
+     </dl>
+</div>
+</body>
+</html>

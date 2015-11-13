@@ -2,7 +2,8 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:cmf="http://namespaces.zope.org/cmf">
 
-   <cmf:registerDirectory name="vieesm_skin_images"/>
-   <cmf:registerDirectory name="vieesm_skin_style"/>
+   <cmf:registerDirectory name="vieesm_skin_images" />
+   <cmf:registerDirectory name="vieesm_skin_style" />
+   <cmf:registerDirectory name="vieesm_skin_templates" />
 
 </configure>

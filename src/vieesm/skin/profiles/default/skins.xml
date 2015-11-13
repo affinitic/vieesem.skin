@@ -7,6 +7,9 @@
     <object name="vieesm_skin_images"
             meta_type="Filesystem Directory View"
             directory="vieesm.skin:skins/vieesm_skin_images"/>
+    <object name="vieesm_skin_templates"
+            meta_type="Filesystem Directory View"
+            directory="vieesm.skin:skins/vieesm_skin_templates"/>
     <object name="vieesm_skin_style"
             meta_type="Filesystem Directory View"
             directory="vieesm.skin:skins/vieesm_skin_style"/>
@@ -15,8 +18,10 @@
                based-on="Sunburst Theme">
         <layer name="vieesm_skin_images"
                insert-after="custom"/>
+        <layer name="vieesm_skin_templates"
+               insert-after="vieesm_skin_images"/>
         <layer name="vieesm_skin_style"
-               insert-after="custom"/>
+               insert-after="vieesm_skin_templates"/>
 
     </skin-path>
 
