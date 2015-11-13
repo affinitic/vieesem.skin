@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- This file holds the setup configuration for the portal_javascripts tool.
+     -->
+
+<object name="portal_javascripts">
+    
+    <javascript cacheable="True"
+                compression="safe"
+                cookable="True"
+                enabled="True"
+                expression=""
+                id="++resource++vieesm.js"
+                inline="False"/>
+
+    <javascript cacheable="True"
+                compression="safe"
+                cookable="True"
+                enabled="True"
+                expression=""
+                id="widget_addremove_vars.js"
+                inline="False"/>
+
+    <javascript cacheable="True"
+                compression="safe"
+                cookable="True"
+                enabled="True"
+                expression=""
+                id="widget_addremove.js"
+                inline="False"/>
+
+</object>
