@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:js fill-slot="javascript_head_slot">
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-1.4.2.min.js"
+                type="text/javascript"></script>
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-ui.min.js"
+                type="text/javascript"></script>
+    </metal:js>
+    <metal:css fill-slot="style_slot">
+        <link href="++resource++collective.javascript.jqueryui/css/ui-lightness/jquery-ui.css"
+              type="text/css"
+              rel="stylesheet" />
+    </metal:css>
+
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main">
+    <div id="zone-titre-moteur-recherche">
+        <h1>Gestion des formations</h1>
+    </div>
+
+    <div id="zone-moteur-recherche">
+        <div class="formulaire">
+            <h2>Chercher une formation</h2>
+            <div id="info-champs">A partir de quelques lettres</div>
+            <form action="admin-resultat-recherche-formation"
+                  method="post">
+                <div class="div_question">
+                    <input type="text"
+                           id="formation-titre"
+                           name="formationTitre"
+                           value=""
+                           size="50">
+                </div>
+                <div class="formControls" align="center">
+                    <input type="submit"
+                           value="lancer la recherche"
+                           class="search-button" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- div metal-->
+</body>
+</html>
+

@@ -1,0 +1,181 @@
+#
+# insertion des données du formulaire formation_ajouter
+# vers la base de données dans la table formation_inscription
+# et dans la table de jointure link_formation_inscription
+#
+
+
+
+
+form_ins_nom=context.REQUEST.form_ins_nom
+form_ins_prenom=context.REQUEST.form_ins_prenom
+
+jour=context.REQUEST.jour
+mois=context.REQUEST.mois
+annee=context.REQUEST.annee
+form_ins_date_naissance=mois+'/'+jour+'/'+annee #pour la db
+date_naissance=jour+'-'+mois+'-'+annee          #pour le mail
+
+form_ins_adresse=context.REQUEST.form_ins_adresse
+form_ins_cp=context.REQUEST.form_ins_cp
+form_ins_localite=context.REQUEST.form_ins_localite
+form_ins_email=context.REQUEST.form_ins_email
+form_ins_tel=context.REQUEST.form_ins_tel
+form_ins_gsm=context.REQUEST.form_ins_gsm
+form_ins_central_pro_fgtb=context.REQUEST.form_ins_central_pro_fgtb
+form_ins_regional=context.REQUEST.form_ins_regional
+form_ins_profession=context.REQUEST.form_ins_profession
+form_ins_entreprise=context.REQUEST.form_ins_entreprise
+form_ins_tel_entreprise=context.REQUEST.form_ins_tel_entreprise
+form_ins_horaire_travail=context.REQUEST.form_ins_horaire_travail
+form_ins_conge_educ=context.REQUEST.form_ins_conge_educ
+form_ins_conge_synd=context.REQUEST.form_ins_conge_synd
+
+if context.REQUEST.get("form_ins_del_synd", None):
+   form_ins_del_synd=context.REQUEST.form_ins_del_synd
+else:
+   form_ins_del_synd='non'
+
+if context.REQUEST.get("form_ins_del_ce", None):
+   form_ins_del_ce=context.REQUEST.form_ins_del_ce
+else:
+   form_ins_del_ce='non'
+   
+if context.REQUEST.get("form_ins_del_cppt", None):
+   form_ins_del_cppt=context.REQUEST.form_ins_del_cppt
+else:
+   form_ins_del_cppt='non'
+
+
+
+form_ins_formation_suivie=context.REQUEST.form_ins_formation_suivie
+form_ins_formation_fk=context.REQUEST.form_ins_formation_fk
+
+
+
+# SI la durée des formations sélectionnes dépassent 80 heures, 
+# ALORS la demande n'est pas valide
+# SINON 
+#    insertion dans la DB
+#    envoi des mails.
+duree=0
+for elem in form_ins_formation_fk:
+   data=context.admin_base.formation.zsql_formation_select_by_pk(form_pk=elem)
+   for elem in data:
+      duree=duree+int(elem.form_duree)
+
+if duree>80:
+   return context.REQUEST.RESPONSE.redirect('probleme')
+else:
+   #---------------------------------------------------------------------------
+   # inscrire les informations d'inscription dans la table formation
+   # inscrire selon le nombre de formation selectionnes dans la table link_formation_inscription
+   context.admin_base.formation.zsql_inscription_insert(form_ins_nom=form_ins_nom, \
+                                                                  form_ins_prenom=form_ins_prenom, \
+                                                                  form_ins_date_naissance=form_ins_date_naissance, \
+                                                                  form_ins_adresse=form_ins_adresse, \
+                                                                  form_ins_cp=form_ins_cp, \
+                                                                  form_ins_localite=form_ins_localite, \
+                                                                  form_ins_email=form_ins_email, \
+                                                                  form_ins_tel=form_ins_tel, \
+                                                                  form_ins_gsm=form_ins_gsm, \
+                                                                  form_ins_central_pro_fgtb=form_ins_central_pro_fgtb, \
+                                                                  form_ins_regional=form_ins_regional, \
+                                                                  form_ins_profession=form_ins_profession, \
+                                                                  form_ins_entreprise=form_ins_entreprise, \
+                                                                  form_ins_tel_entreprise=form_ins_tel_entreprise, \
+                                                                  form_ins_horaire_travail=form_ins_horaire_travail, \
+                                                                  form_ins_conge_educ=form_ins_conge_educ, \
+                                                                  form_ins_del_synd=form_ins_del_synd, \
+                                                                  form_ins_del_ce=form_ins_del_ce, \
+                                                                  form_ins_del_cppt=form_ins_del_cppt, \
+                                                                  form_ins_formation_suivie=form_ins_formation_suivie)
+   
+   # recupère la clé la plus grande qui vient d'être crée lors de linsertion ci-dessus
+   formPk=context.admin_base.formation.zsql_inscription_select_max_pk()
+   for elem in formPk:
+      lnk_inscription_pk=elem.max
+      #print 'cleForm:%s'%(lnk_inscription_pk,)
+   
+   
+   formation=""
+   for elem in form_ins_formation_fk:
+      lnk_formation_pk=elem
+      context.admin_base.formation.zsql_link_formation_inscription_insert(lnk_formation_pk=lnk_formation_pk, \
+                                                                          lnk_inscription_pk=lnk_inscription_pk)
+      data=context.admin_base.formation.zsql_formation_select_by_pk(form_pk=elem)
+      for elem in data:
+         formation=formation+elem.form_titre+'&nbsp;&nbsp;&nbsp;'
+      
+   #-----------------------------------------------------
+   # envoi du mail
+   #
+   adresse=['carmela.dibernardo@fgtb.be','alain.meurant@skynet.be' ]
+   mMessage=''
+   mailhost=context.MailHost
+   mFrom=form_ins_email
+   #mTo='carmela.dibernardo@fgtb.be'
+   #mCc='michele.nogues@cenforsoc.be'
+   #mCc='alain.meurant@skynet.be'
+   #mBcc='alain.meurant@skynet.be'
+   mSubj='[CENFORSOC :: inscription formation]'
+   
+   mMessage=mMessage+"<html><head></head><body bgcolor='#EEEEFF'>"
+   mMessage=mMessage+"""
+   <font color='#FF0000'><b>:: INSCRIPTION FORMATION CENFORSOC ::</b></font><br /><br />
+   Formation(s) choisie(s) : <font color='#ff9c1b'><b>%s</b></font><br />
+   Nbre d'heures total : <font color='#ff9c1b'><b>%s</b></font><br />
+   <br />
+   Nom : <font color='#ff9c1b'><b>%s</b></font><br />
+   Prénom : <font color='#ff9c1b'><b>%s</b></font><br />
+   Date de Naissance : <font color='#ff9c1b'><b>%s</b></font><br />
+   Adresse : <font color='#ff9c1b'><b>%s</b></font><br />
+   Code Postal : <font color='#ff9c1b'><b>%s</b></font><br />
+   Localité : <font color='#ff9c1b'><b>%s</b></font><br />
+   E-mail : <font color='#ff9c1b'><b>%s</b></font><br />
+   Téléphone : <font color='#ff9c1b'><b>%s</b></font><br />
+   GSM : <font color='#ff9c1b'><b>%s</b></font><br />
+   <br />
+   Centrale professionnelle FGTB : <font color='#ff9c1b'><b>%s</b></font><br />
+   Régionale de : <font color='#ff9c1b'><b>%s</b></font><br />
+   Profession : <font color='#ff9c1b'><b>%s</b></font><br />
+   Entreprise : <font color='#ff9c1b'><b>%s</b></font><br />
+   Téléphone de l'entreprise : <font color='#ff9c1b'><b>%s</b></font><br />
+   <br />
+   Horaire de travail : <font color='#ff9c1b'><b>%s</b></font><br />
+   Congé éducation : <font color='#ff9c1b'><b>%s</b></font><br />
+   Congé syndical : <font color='#ff9c1b'><b>%s</b></font><br />
+   Mandat FGTB :<br /> 
+   &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
+   &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
+   &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
+   <br />
+   Formations déjà suivies : <font color='#ff9c1b'><b>%s</b></font><br />
+   """%(formation, duree, form_ins_nom.upper(), form_ins_prenom.capitalize(), date_naissance, \
+        form_ins_adresse, form_ins_cp, form_ins_localite, form_ins_email, form_ins_tel, \
+        form_ins_gsm, form_ins_central_pro_fgtb, form_ins_regional, form_ins_profession, \
+        form_ins_entreprise, form_ins_tel_entreprise, form_ins_horaire_travail, \
+        form_ins_conge_educ, form_ins_conge_synd, form_ins_del_synd, form_ins_del_ce, form_ins_del_cppt, form_ins_formation_suivie)
+   mMessage=mMessage+"</body></html>"
+
+   mMessage = unicode(mMessage, 'utf8').encode('latin1')
+
+   
+   # XXX by JF
+   from Products.CMFCore.utils import getToolByName
+   portal_url = getToolByName(context, 'portal_url')
+   portal = portal_url.getPortalObject()
+   fromEmail = portal.getProperty('email_from_address')
+   
+   for elem in adresse:
+      mailhost.secureSend(message = mMessage,
+                          mto = elem,
+                          mfrom =  fromEmail,                       
+                          subject = mSubj,
+                          subtype = 'html',
+                          charset='latin1')
+
+   
+  
+
+   return context.REQUEST.RESPONSE.redirect('merci')

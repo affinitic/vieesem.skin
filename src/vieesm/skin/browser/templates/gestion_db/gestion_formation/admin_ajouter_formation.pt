@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main">
+    <h1>Gestion des formations</h1>
+    <div class="formulaire">
+        <h2>Ajouter une formation</h2>
+        <form action="insertFormation"
+              methof="post">
+            <div class="formInput">
+                <label for="formationTitre">Titre :</label>
+                <input type="text"
+                       name="formationTitre"
+                       id="formationTitre"
+                       size="50"/>
+            </div>
+            <div class="formInput">
+                <label for="formationDuree">Dur&eacute;e :</label>
+                <input type="text"
+                       name="formationDuree"
+                       id="formationDuree"
+                       size="5"/> heures
+            </div>
+            <div class="formInput">
+                <label for="formationDateDebut">Date de d&eacute;but :</label>
+                <input type="text"
+                       name="formationDateDebut"
+                       id="formationDateDebut"
+                       size="50"/>
+            </div>
+            <div class="formInput">
+                <label for="formationDescription">Description :</label>
+                <textarea name="formationDescription"
+                          id="formationDescription"
+                          rows="5"
+                          cols="80"></textarea>
+            </div>
+            <div class="formInput">
+                <label for="formationNiveauRequis">Niveau requis :</label>
+                <input type="text"
+                       name="formationNiveauRequis"
+                       id="formationNiveauRequis"
+                       size="50"/>
+            </div>
+            <div class="formInput">
+                <label for="formationEtat">Etat :</label>
+                <select name="formationEtat"
+                        id="formationEtat">
+                    <option value="ouvert"> Formation ouverte </option>
+                    <option value="complete"> Formation complète </option>
+                </select>
+            </div>
+            
+            <div class="formControls" align="center">
+                <input class="context"
+                       type="submit"
+                       name="submit"
+                       value="Enregister la formation" />
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

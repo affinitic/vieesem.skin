@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+<head>
+  <metal:noborder fill-slot="top_slot"
+         tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+<body>
+    <div metal:fill-slot="main">
+        <br />
+        <h1>Demande d'inscription à une formation</h1>
+
+        <fieldset>
+            <div id="mail-gone-image">
+                <img src="icon_attention.png" />
+            </div>
+            <div id="mail-gone-message">
+                <p>
+                    Le total d'heures des formations que vous avez choisies dépasse
+                    les <b>80 heures autorisées</b>.
+                    <br /><br />
+                    Veuillez modifier votre sélection en conséquence.
+                </p>
+            </div>
+            <div class="visualClear"></div>
+            <div class="plus-info">
+                <a href="javascript:history.back();">Retour</a>
+            </div>
+        </fieldset>
+    </div>
+</body>
+</html>
+

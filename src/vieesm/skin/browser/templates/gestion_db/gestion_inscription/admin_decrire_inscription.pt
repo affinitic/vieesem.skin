@@ -1,0 +1,146 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="inscriptions python: view.getSearchingInscriptionFormation()">
+    <h1>Gestion des formations</h1>
+    <fieldset class="fieldset-border">
+        <legend class="legende">Afficher une inscription</legend>
+        <tal:boucle tal:repeat="inscription inscriptions">
+            <div class="boite-resultat">
+                <ul id="donnee-liste">
+                    <li>
+                        <span class="donnee-etiquette">Nom :</span>
+                        <span tal:content="inscription/form_ins_nom"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Prénom :</span>
+                        <span tal:content="inscription/form_ins_prenom"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Date d'inscription :</span>
+                        <span tal:content="python: inscription.form_ins_date.strftime('%d-%m-%Y')"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Date de naissance :</span>
+                        <span tal:content="python: inscription.form_ins_date_naissance.strftime('%d-%m-%Y')"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Adresse postale :</span>
+                        <span tal:content="inscription/form_ins_adresse"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Code postale :</span>
+                        <span tal:content="inscription/form_ins_cp"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Localité :</span>
+                        <span tal:content="inscription/form_ins_localite"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Email :</span>
+                        <span tal:content="inscription/form_ins_email"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Téléphone :</span>
+                        <span tal:content="inscription/form_ins_tel"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">GSM :</span>
+                        <span tal:content="inscription/form_ins_gsm"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Central professionnelle FGTB :</span>
+                        <span tal:content="inscription/form_ins_central_pro_fgtb"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Régionale :</span>
+                        <span tal:content="inscription/form_ins_regional"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Profession :</span>
+                        <span tal:content="inscription/form_ins_profession"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Entreprise :</span>
+                        <span tal:content="inscription/form_ins_entreprise"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Horaire de travail :</span>
+                        <span tal:content="inscription/form_ins_horaire_travail"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Congé éducation payé :</span>
+                        <span tal:content="inscription/form_ins_conge_educ"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Congé syndical payé :</span>
+                        <span tal:content="inscription/form_ins_conge_synd"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Délégué(e) syndicale effectif :</span>
+                        <span tal:content="inscription/form_ins_del_synd"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Délégué(e) CE effectif :</span>
+                        <span tal:content="inscription/form_ins_del_ce"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Délégué(e) CPPT effectif :</span>
+                        <span tal:content="inscription/form_ins_del_cppt"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">
+                            Formations déjà suivies à CENFORSOC et en centrales professionnelles
+                        </span>
+                        <tal:block tal:define="formations python:view.getFormationForInscription(inscription.form_ins_pk)">
+                            <tal:boucle tal:repeat="formation formations">
+                                <span tal:content="formation/form_titre"
+                                      class="donnee-db" />
+                                <br />
+                            </tal:boucle>
+                        </tal:block>
+                    </li>
+
+                </ul>
+            </div>
+        </tal:boucle>
+    </fieldset>
+    <div id="retour">
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/formations/chercher-une-inscription">
+           retour à la recherche</a>
+    </div>
+
+</div><!-- div metal-->
+</body>
+</html>
+

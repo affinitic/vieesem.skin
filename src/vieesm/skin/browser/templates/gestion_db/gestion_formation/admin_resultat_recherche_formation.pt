@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-FR"
+      lang="en-US"
+      metal:use-macro="here/portal_skins/custom/main_template/macros/master"
+      i18n:domain="plone">
+
+  <metal:block fill-slot="base">
+    <tal:block tal:define="dummy python:request.set('disable_border', 1)"
+               tal:replace="nothing">
+          Disable the tabs
+    </tal:block>
+  </metal:block>
+  
+<div metal:fill-slot="main">
+    <h1>Gestion des formations</h1>
+    <fieldset class="fieldset-border">
+        <legend class="legende">Décrire une formation</legend>
+        <div tal:define="formation python: view.getSearchingFormation()">
+            <div class="boite-resultat">
+                <ul class="description-formation">
+                    <li>
+                        <span class="donnee-etiquette">Titre</span>
+                        <span tal:content="formation/form_titre"
+                               class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Dur&eacute;e</span>
+                        <span class="donnee-db">
+                            <span tal:content="formation/form_duree" />
+                            heures
+                        </span>
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Date de d&eacute;but</span>
+                        <span tal:content="python: formation.form_date_deb.strftime('%d-%m-%Y')"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Description</span>
+                        <span tal:content="formation/form_description"
+                              class="donnee-db" />
+                    </li>
+                    <li tal:condition="python: formation.form_niveau_requis">
+                        <span class="donnee-etiquette">Niveau requis</span>
+                        <span tal:content="formation/form_niveau_requis"
+                              class="donnee-db" />
+                    </li>
+                    <li>
+                        <span class="donnee-etiquette">Etat</span>
+                        <span tal:content="formation/form_etat"
+                              class="donnee-db" />
+                    </li>
+                </ul>
+                <hr class="ligne-top-menu-gestion-donnee" />
+                <ul id="menu-gestion-donnee">
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-un-periodique">
+                            Chercher une formation</a>
+                    </li>
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-modifier-une-formation?formationPk=${formation/form_pk}">
+                            Modifier cette formation</a>
+                    </li>
+                </ul>
+            </div>
+        </div><!--define-->
+    </fieldset>
+</div>
+</html>

@@ -1,0 +1,202 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:plone="http://namespaces.plone.org/plone"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="vieesm.skin">
+
+    <!-- 'cenforsoc skin' Zope 3 browser layer -->
+    <interface
+        interface=".interfaces.IVieesmTheme"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="vieesm skin"
+        />
+
+<!-- js -->
+    <browser:resource
+        name="vieesm.js"
+        file="js/vieesm.js"
+        />
+
+<!-- manage cenforsoc -->
+    <browser:page
+        for="*"
+        name="manageVieesm"
+        class=".ManageVieesm.ManageVieesm"
+        allowed_interface=".interfaces.IManageVieesm"
+        permission="zope.Public"
+        />
+
+
+<!-- LEFFE SEARCH -->
+    <browser:page
+         for="*"
+         name="formation-searchJSON"
+         class=".SearchFormation.SearchFormationAutoCompleteJSON"
+         permission="zope.Public"
+         />
+
+    <browser:page
+         for="*"
+         name="inscription-searchJSON"
+         class=".SearchInscriptionFormation.SearchInscriptionFormationAutoCompleteJSON"
+         permission="zope.Public"
+         />
+
+
+<!-- FORMATION -->
+    <browser:page
+        name="gestionFormation"
+        for="*"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        attribute="gestionFormation"
+        />
+    <browser:page
+        name="s-inscrire-a-une-formation"
+        for="*"
+        template="templates/formation/formation_inscription_form.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="decrire-une-formation"
+        for="*"
+        template="templates/formation/decrire_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="chercher-une-formation"
+        for="*"
+        template="templates/formation/chercher_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+          allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="probleme-lors-de-l-inscription"
+        for="*"
+        template="templates/formation/probleme_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+   <browser:page
+        name="insertFormation"
+        for="*"
+        class=".ManageFormation.ManageFormation"
+        permission="zope.Public"
+        attribute="insertFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="updateFormation"
+        for="*"
+        class=".ManageFormation.ManageFormation"
+        permission="zope.Public"
+        attribute="updateFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+
+
+<!-- INSCRIPTION -->
+    <browser:page
+        name="insertInscriptionFormation"
+        for="*"
+        class=".ManageFormation.ManageFormation"
+        permission="zope.Public"
+        attribute="insertInscriptionFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="merci-inscription"
+        for="*"
+        template="templates/formation/merci_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+
+
+<!-- GESTION DB -->
+<!-- gestion db :: formation -->
+    <browser:page
+        name="admin-decrire-une-formation"
+        for="*"
+        template="templates/gestion_db/gestion_formation/admin_decrire_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="admin-chercher-une-formation"
+        for="*"
+        template="templates/gestion_db/gestion_formation/admin_chercher_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="admin-resultat-recherche-formation"
+        for="*"
+        template="templates/gestion_db/gestion_formation/admin_resultat_recherche_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="admin-lister-les-formations"
+        for="*"
+        template="templates/gestion_db/gestion_formation/admin_lister_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="admin-ajouter-une-formation"
+        for="*"
+        template="templates/gestion_db/gestion_formation/admin_ajouter_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+   <browser:page
+        name="admin-modifier-une-formation"
+        for="*"
+        template="templates/gestion_db/gestion_formation/admin_modifier_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+
+
+<!-- gestion db :: inscription -->
+    <browser:page
+        name="admin-lister-les-inscriptions"
+        for="*"
+        template="templates/gestion_db/gestion_inscription/admin_lister_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="admin-chercher-une-inscription"
+        for="*"
+        template="templates/gestion_db/gestion_inscription/admin_chercher_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="admin-decrire-une-inscription"
+        for="*"
+        template="templates/gestion_db/gestion_inscription/admin_decrire_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+
+</configure>

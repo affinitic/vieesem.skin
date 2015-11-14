@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:js fill-slot="javascript_head_slot">
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-1.4.2.min.js"
+                type="text/javascript"></script>
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-ui.min.js"
+                type="text/javascript"></script>
+    </metal:js>
+    <metal:css fill-slot="style_slot">
+        <link href="++resource++collective.javascript.jqueryui/css/ui-lightness/jquery-ui.css"
+              type="text/css"
+              rel="stylesheet" />
+    </metal:css>
+
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main">
+    <h1>Gestion des formations</h1>
+    <fieldset>
+        <legend class="legende">Rechercher une inscription</legend>
+        <p>Plusieurs types de recherche sont possibles.</p>
+
+        <div class="formulaire">
+            <h2>A partir du nom d'une personne</h2>
+            <form action="admin-decrire-une-inscription"
+                  method="post">
+                <div class="div_question">
+                    <input type="text"
+                           id="formation-nom-inscrit"
+                           name="inscriptionNom"
+                           value=""
+                           size="50">
+                </div>
+                <div class="formControls" align="center">
+                    <input type="submit"
+                           value="lancer la recherche"
+                           class="search-button" />
+                </div>
+            </form>
+        </div>
+
+        <div class="formulaire">
+            <h2>A partir de la liste de tous les inscrits</h2>
+            <form action="admin-decrire-une-inscription"
+                  method="post">
+                <div class="div_question">
+                    <select tal:define="inscriptions python:view.getAllDistinctInscriptions()"
+                            name="inscriptionNom">
+                        <option>...</option>
+                        <tal:boucle tal:repeat="nom inscriptions">
+                            <option value=""
+                                    tal:attributes="value python:nom[0]">
+                                <span tal:content="python: nom[0]" />
+                            </option>
+                        </tal:boucle>
+                    </select>
+                </div>
+                <div class="formControls" align="center">
+                    <input type="submit"
+                           value="lancer la recherche"
+                           class="search-button" />
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div><!-- div metal-->
+</body>
+</html>
+
