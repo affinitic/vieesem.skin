@@ -17,28 +17,28 @@
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-formation"
+                       tal:attributes="href string:${context/portal_url}/admin-chercher-une-formation"
                        class="lien-menu-gestiondb">
                        &#10147; Chercher les formations
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-ajouter-une-formation"
+                       tal:attributes="href string:${context/portal_url}/admin-ajouter-une-formation"
                        class="lien-menu-gestiondb">
                        &#10147; Ajouter une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-formation"
+                       tal:attributes="href string:${context/portal_url}/admin-chercher-une-formation"
                        class="lien-menu-gestiondb">
                        &#10147; Modifier une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-lister-les-formations"
+                       tal:attributes="href string:${context/portal_url}/admin-lister-les-formations"
                        class="lien-menu-gestiondb">
                        &#10147; Lister les formations
                     </a>
@@ -50,14 +50,14 @@
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-inscription"
+                       tal:attributes="href string:${context/portal_url}/admin-chercher-une-inscription"
                        class="lien-menu-gestiondb">
                        &#10147; Chercher une inscription
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-lister-les-inscriptions"
+                       tal:attributes="href string:${context/portal_url}/admin-lister-les-inscriptions"
                        class="lien-menu-gestiondb">
                        &#10147; Lister les inscriptions
                     </a>
