@@ -1,26 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-#import time
-#import random
 from sqlalchemy import select, distinct
-#from mailer import Mailer
-#from LocalFS import LocalFS
 from zope.component import getMultiAdapter
 from Products.Five import BrowserView
 from zope.interface import implements
 from z3c.sqlalchemy import getSAWrapper
-#from Products.CMFPlone.utils import normalizeString
-#from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
-#from Products.CMFPlone.utils import normalizeString
 from Products.CMFCore.utils import getToolByName
-#from Products.CMFPlone import PloneMessageFactory as _
-#from Products.AddRemoveWidget.AddRemoveWidget import AddRemoveWidget
-#from Products.Archetypes.atapi import LinesField
-#from Products.Archetypes.Renderer import renderer
-#from Products.Archetypes.atapi import BaseContent
 from interfaces import IManageFormation
-#from collective.captcha.browser.captcha import Captcha
 
 
 class ManageFormation(BrowserView):
@@ -324,9 +311,9 @@ class ManageFormation(BrowserView):
             session.add(newEntry)
             session.flush()
 
-            sujet = "CENFORSOC : demande d'inscription via le site"
+            sujet = "VIE-ESEM : demande d'inscription via le site"
             message = """
-                  <font color='#FF0000'><b>:: INSCRIPTION FORMATION CENFORSOC ::</b></font><br /><br />
+                  <font color='#FF0000'><b>:: INSCRIPTION FORMATION VIE-ESEM ::</b></font><br /><br />
                   Formation(s) choisie(s) : <font color='#ff9c1b'><b>%s</b></font><br />
                   Nbre d'heures total : <font color='#ff9c1b'><b>%s</b></font><br />
                   <br />
@@ -367,7 +354,7 @@ class ManageFormation(BrowserView):
                          inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE,
                          inscriptionFormationDelegationCPPT, inscriptionFormationFormationSuivie)
 
-            sujetInscrit = "CENFORSOC : confirmation de votre demande d'inscription"
+            sujetInscrit = "VIE-ESEM : confirmation de votre demande d'inscription"
             messageInscrit = """
                          Bonjour %s %s,
                          <br /><br />
@@ -376,11 +363,11 @@ class ManageFormation(BrowserView):
                          <br /><br />
                          Bien à vous,
                          <br /><br />
-                         L'équipe Cenforsoc.
+                         L'équipe Vie-Esem.
                          """ % (inscriptionFormationPrenom, inscriptionFormationNom, lf)
 
             cenforsocTools = getMultiAdapter((self.context, self.request), name="manageCenforsoc")
-            cenforsocTools.sendMailToCenforsoc(sujet, message)
+            cenforsocTools.sendMailToVieesm(sujet, message)
             cenforsocTools.sendMailForInscription(sujetInscrit, messageInscrit, inscriptionFormationEmail)
 
             portalUrl = getToolByName(self.context, 'portal_url')()
