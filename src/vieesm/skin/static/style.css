@@ -2,7 +2,7 @@
 Projet :vie-esem asbl
 Affinitic, novembre 2015
 
-rouge bg : #c64d4d;
+rouge bg : #c64d4d;  rgba(198,77, 77, 1)
 ***/
 @font-face {
 font-family:'PT Sans Narrow';
@@ -52,10 +52,16 @@ background-color:rgba(250,250,250,1)
 
 /*** HEADER ***/
 #header{
-height:491px;
+}
+
+#header #banner-sup{
+height:389px;
+margin-top:38px;
 background-image:url(images/banner_sup.png);
 background-repeat:no-repeat;
-background-position:center 100px;
+background-position:center top;
+border-top:1px dotted rgba(198,77, 77, 0.2);
+border-bottom:1px dotted rgba(198,77, 77, 0.2);
 }
 
 #logo{
@@ -212,16 +218,23 @@ border:1px solid #fff;
 border-radius:8px;
 }
 
+#portal-breadcrumbs {
+font-size: 60%;
+margin-bottom: 1em;
+margin-left: 0.25em;
+}
 
 #username{
-border-bottom:1px dotted #aaa;
-width:970px;
-float:right;
-padding-right:10px;
-text-align:right;
-font-size:0.6em;
-color:#bbb;
-min-height:10px;
+float: right;
+width: 980px;
+color: #bbb;
+font-size: 0.6em;
+margin-bottom: 9px;
+min-height: 15px;
+padding-right: 10px;
+padding-top: 3px;
+text-align: right;
+border-bottom: 1px dotted #ddd;
 }
 
 
