@@ -28,6 +28,18 @@ setup(name='vieesm.skin',
       install_requires=[
           'setuptools',
           'plone.api',
+          'plone.app.theming',
           'plone.app.themingplugins',
+          'plone.resource',
+          'Products.AddRemoveWidget',
           # -*- Extra requirements: -*-
-      ])
+      ],
+      entry_points="""
+      # -*- Entry points: -*-
+
+      [z3c.autoinclude.plugin]
+      target = plone
+      """,
+      setup_requires=["PasteScript"],
+      paster_plugins=["ZopeSkel"],
+      )
