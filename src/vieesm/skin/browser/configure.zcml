@@ -4,7 +4,7 @@
    xmlns:browser="http://namespaces.zope.org/browser"
    i18n_domain="vieesm.skin">
 
-    <!-- 'cenforsoc skin' Zope 3 browser layer -->
+    <!-- 'vieesem skin' Zope 3 browser layer -->
     <interface
         interface=".interfaces.IVieesmTheme"
         type="zope.publisher.interfaces.browser.IBrowserSkinType"
@@ -17,7 +17,7 @@
         file="js/vieesm.js"
         />
 
-<!-- manage cenforsoc -->
+<!-- manage vieesem -->
     <browser:page
         for="*"
         name="manageVieesm"
