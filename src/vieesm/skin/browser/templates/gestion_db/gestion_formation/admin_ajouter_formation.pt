@@ -58,8 +58,11 @@
                     <option value="complete"> Formation complète </option>
                 </select>
             </div>
-            
+
             <div class="formControls" align="center">
+                <input type="hidden"
+                       name="formationOrganisme"
+                       value="vie-esem" />
                 <input class="context"
                        type="submit"
                        name="submit"

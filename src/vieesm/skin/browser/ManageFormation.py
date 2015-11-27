@@ -26,6 +26,20 @@ class ManageFormation(BrowserView):
         allFormations = query.all()
         return allFormations
 
+    def getAllFormationsByOrganisme(self, organisme):
+        """
+        table pg formation
+        recuperation de toutes les formations
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        FormationTable = wrapper.getMapper('formation')
+        query = session.query(FormationTable)
+        query = query.filter(FormationTable.form_organisme == organisme)
+        query = query.order_by(FormationTable.form_titre)
+        allFormations = query.all()
+        return allFormations
+
     def getFormationByPk(self, formationPk):
         """
         table pg formation
@@ -154,6 +168,7 @@ class ManageFormation(BrowserView):
         formationDescription = fields.get('formationDescription', None)
         formationNiveauRequis = fields.get('formationNiveauRequis', None)
         formationEtat = fields.get('formationEtat', None)
+        formationOrganisme = fields.get('formationOrganisme', None)
 
         formationTitre = unicode(formationTitre, 'utf-8')
         formationDescription = unicode(formationDescription, 'utf-8')
@@ -167,7 +182,8 @@ class ManageFormation(BrowserView):
                                 form_date_deb=formationDateDebut,
                                 form_description=formationDescription,
                                 form_niveau_requis=formationNiveauRequis,
-                                form_etat=formationEtat)
+                                form_etat=formationEtat,
+                                form_organisme=formationOrganisme)
         session.add(newEntry)
         session.flush()
         session.refresh(newEntry)
@@ -175,9 +191,9 @@ class ManageFormation(BrowserView):
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
-        message = u"La nouvelle formation %s  a bien été enregistrée !" % unicode(formationTitre, 'utf-8')
+        message = u"La nouvelle formation %s  a bien été enregistrée !" % (formationTitre)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/gestion-de-la-base/les-formations/admin-decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
+        url = "%s/admin-decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
         self.request.response.redirect(url)
         return ''
 
@@ -194,6 +210,7 @@ class ManageFormation(BrowserView):
         formationDateDebut = fields.get('formationDateDebut', None)
         formationDescription = fields.get('formationDescription', None)
         formationNiveauRequis = fields.get('formationNiveauRequis', None)
+        formationOrganisme = fields.get('formationOrganisme', None)
         formationEtat = fields.get('formationEtat', None)
 
         wrapper = getSAWrapper('cenforsoc')
@@ -208,6 +225,7 @@ class ManageFormation(BrowserView):
             formation.form_date_deb = unicode(formationDateDebut, 'utf-8')
             formation.form_description = unicode(formationDescription, 'utf-8')
             formation.form_niveau_requis = unicode(formationNiveauRequis, 'utf-8')
+            formation.form_organisme = unicode(formationOrganisme, 'utf-8')
             formation.form_etat = unicode(formationEtat, 'utf-8')
 
         session.flush()
@@ -216,7 +234,7 @@ class ManageFormation(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"La formation %s a bien été modifiée !" % unicode(formationTitre, 'utf-8')
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/gestion-de-la-base/les-formations/admin-decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
+        url = "%s/admin-decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
         self.request.response.redirect(url)
         return ''
 
@@ -271,6 +289,7 @@ class ManageFormation(BrowserView):
             inscriptionFormationDelegationCE = fields.get('inscriptionFormationDelegationCE', None)
             inscriptionFormationDelegationCPPT = fields.get('inscriptionFormationDelegationCPPT', None)
             inscriptionFormationFormationSuivie = fields.get('inscriptionFormationFormationSuivie', None)
+            inscriptionFormationOrganisme = fields.get('inscriptionFormationOrganisme', None)
 
             inscriptionFormationInscriptionDate = datetime.datetime.now()
             listeFormations = ""
@@ -307,7 +326,8 @@ class ManageFormation(BrowserView):
                                     form_ins_del_synd=inscriptionFormationDelegationSyndicale,
                                     form_ins_del_ce=inscriptionFormationDelegationCE,
                                     form_ins_del_cppt=inscriptionFormationDelegationCPPT,
-                                    form_ins_formation_suivie=inscriptionFormationFormationSuivie)
+                                    form_ins_formation_suivie=inscriptionFormationFormationSuivie,
+                                    form_ins_organisme=inscriptionFormationOrganisme)
             session.add(newEntry)
             session.flush()
 
@@ -405,18 +425,28 @@ class ManageFormation(BrowserView):
         allInscriptions = query.all()
         return allInscriptions
 
+    def getAllInscriptionsByOrganisme(self, organisme):
+        """
+        table pg inscription
+        recuperation de toutes les inscriptionss
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        InscriptionFormationTable = wrapper.getMapper('formation_inscription')
+        query = session.query(InscriptionFormationTable)
+        query = query.filter(InscriptionFormationTable.form_ins_organisme == organisme)
+        query = query.order_by(InscriptionFormationTable.form_ins_nom)
+        allInscriptions = query.all()
+        return allInscriptions
+
     def getAllDistinctInscriptions(self):
         """
         table pg inscription
         recuperation de toutes les inscriptionss
         """
         wrapper = getSAWrapper('cenforsoc')
-        #session = wrapper.session
         InscriptionFormationTable = wrapper.getMapper('formation_inscription')
-        #query = session.query(InscriptionFormationTable)
         allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom)], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
-        #query = query.order_by(InscriptionFormationTable.form_ins_nom)
-        #allInscriptions = query.all()
         return allInscriptions
 
     def getInscriptionByPk(self, inscriptionPk):

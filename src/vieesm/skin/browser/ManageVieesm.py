@@ -92,7 +92,8 @@ class ManageVieesm(BrowserView):
         mailer.setSubject(sujet)
         mailer.setRecipients("alain.meurant@affinitic.be")
         mail = message
-        mailer.sendAllMail(mail)
+        print mail
+        #mailer.sendAllMail(mail)
 
     def sendMailToVieesm(self, sujet, message):
         """
@@ -105,20 +106,20 @@ class ManageVieesm(BrowserView):
         recipients = "%s, %s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', 'riet.vandeputte@fgtb.be', 'adriana.muccilli@fgtb.be')
         mailer.setRecipients(recipients)
         mail = message
-        mailer.sendAllMail(mail)
+        print mail
+        #mailer.sendAllMail(mail)
 
     def sendMailForInscription(self, sujetInscrit, messageInscrit, emailInscrit):
         """
         envoi de mail à la personne qui a fait une demande d'inscription
         """
         mailer = Mailer("localhost", emailInscrit)
-        #mailer = Mailer("relay.skynet.be", 'alain.meurant@skynet.be')
         mailer.setSubject(sujetInscrit)
-        #recipients = "%s" % ('alain.meurant@skynet.be')
         recipients = "%s, %s, %s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', 'riet.vandeputte@fgtb.be', 'adriana.muccilli@fgtb.be', emailInscrit)
         mailer.setRecipients(recipients)
         mail = messageInscrit
-        mailer.sendAllMail(mail)
+        print mail
+        #mailer.sendAllMail(mail)
 
     def getTimeStamp(self):
         timeStamp = datetime.datetime.now()

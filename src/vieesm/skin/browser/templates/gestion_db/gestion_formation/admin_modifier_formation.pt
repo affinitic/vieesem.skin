@@ -79,12 +79,19 @@
                         </span>
                     </select>
                 </div>
-                
+                <div class="formInput">
+                    <label for="formationOrganisme">Organisme :</label>
+                    <span tal:content="formation/form_organisme" />
+                </div>
+
                 <div class="formControls">
                     <input type="hidden"
                            name="formationPk"
                            value=""
                            tal:attributes="value formation/form_pk" />
+                    <input type="hidden"
+                           name="formationOrganisme"
+                           value="vie-esem" />
                     <input class="context"
                            type="submit"
                            name="submit"
