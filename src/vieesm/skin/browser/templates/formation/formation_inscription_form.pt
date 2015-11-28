@@ -33,7 +33,7 @@
     <fieldset class="fieldset-border">
         <legend class="legende">Formations propos&eacute;es</legend>
         <ul>
-            <tal:requete tal:define="Formations python: view.getFormationOpen()">
+            <tal:requete tal:define="Formations python: view.getFormationOpenByOrganisme('vie-esem')">
                 <tal:boucle tal:repeat="elem Formations">
                     <li>
                         <a href=""
@@ -62,7 +62,7 @@
               onsubmit="return validate(this);">
             <div class="formInput">
                 <label for="inscriptionFormationFk">Choisissez votre formation :</label>
-                <tal:requete tal:define="Formations python: view.getFormationOpen()">
+                <tal:requete tal:define="Formations python: view.getFormationOpenByOrganisme('vie-esem')">
                     <tal:boucle tal:repeat="elem Formations">
                         <input type="checkbox"
                                name="inscriptionFormationFk:list"

@@ -2,7 +2,7 @@
 <object name="portal_css">
 
     <stylesheet title=""
-                id="++theme++vieesm.skin/style.css"
+                id="++theme++vieesem.skin/style.css"
                 media="screen"
                 rel="stylesheet"
                 rendering="link"
@@ -24,7 +24,7 @@
                 enabled="1"
                 expression=""/>
 
-    <stylesheet title="VIEESM styles"
+    <stylesheet title="vieesem styles"
                 id="style.css"
                 media="screen"
                 rel="stylesheet"

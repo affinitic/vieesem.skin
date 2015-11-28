@@ -10,11 +10,11 @@ from Products.AddRemoveWidget.AddRemoveWidget import AddRemoveWidget
 from Products.Archetypes.atapi import LinesField
 from Products.Archetypes.Renderer import renderer
 from Products.Archetypes.atapi import BaseContent
-from interfaces import IManageVieesm
+from interfaces import IManageVieesem
 
 
-class ManageVieesm(BrowserView):
-    implements(IManageVieesm)
+class ManageVieesem(BrowserView):
+    implements(IManageVieesem)
 
 # ### gestion des widgets kupu addRemoveList ###
     def getWysiwygField(self, name, value):
@@ -95,7 +95,7 @@ class ManageVieesm(BrowserView):
         print mail
         #mailer.sendAllMail(mail)
 
-    def sendMailToVieesm(self, sujet, message):
+    def sendMailTovieesem(self, sujet, message):
         """
         envoi de mail à l'operateur dont les donnees change d'état
         """

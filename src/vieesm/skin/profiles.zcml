@@ -4,9 +4,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="Theme package for VIEESM website"
+      title="Theme package for vieesem website"
       directory="profiles/default"
-      description="Installs profile for Theme package for VIEESM website"
+      description="Installs profile for Theme package for vieesem website"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

@@ -85,7 +85,7 @@ class ManageFormation(BrowserView):
             formations.append(formation)
         return formations
 
-    def getFormationOpen(self):
+    def getFormationOpenByOrganisme(self, organisme):
         """
         table pg formation
         recuperation d'une formation selon son état ouverte
@@ -95,6 +95,7 @@ class ManageFormation(BrowserView):
         FormationTable = wrapper.getMapper('formation')
         query = session.query(FormationTable)
         query = query.filter(FormationTable.form_etat == 'ouvert')
+        query = query.filter(FormationTable.form_organisme == organisme)
         formationsOpen = query.all()
         return formationsOpen
 
@@ -386,8 +387,8 @@ class ManageFormation(BrowserView):
                          L'équipe Vie-Esem.
                          """ % (inscriptionFormationPrenom, inscriptionFormationNom, lf)
 
-            cenforsocTools = getMultiAdapter((self.context, self.request), name="manageCenforsoc")
-            cenforsocTools.sendMailToVieesm(sujet, message)
+            cenforsocTools = getMultiAdapter((self.context, self.request), name="manageVieesem")
+            cenforsocTools.sendMailTovieesem(sujet, message)
             cenforsocTools.sendMailForInscription(sujetInscrit, messageInscrit, inscriptionFormationEmail)
 
             portalUrl = getToolByName(self.context, 'portal_url')()

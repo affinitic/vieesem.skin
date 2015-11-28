@@ -8,6 +8,6 @@
 
    <plone:static type="theme"
                  directory="static"
-                 name="vieesm.skin" />
+                 name="vieesem.skin" />
 
 </configure>

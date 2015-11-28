@@ -15,7 +15,7 @@
         Gestion de la base de donn&eacute;es des formations
     <fieldset>
         <legend class="legende">Lister les inscriptions</legend>
-          <tal:requete tal:define="Formations python:view.getAllInscriptions()">
+          <tal:requete tal:define="Formations python:view.getAllInscriptionsByOrganisme('vie-esem')">
             <tal:boucle tal:repeat="formation Formations">
                 <div tal:define="inscriptionPk formation/form_ins_pk"
                      class="boite-resultat">
@@ -50,7 +50,7 @@
                   </ul>
                   <hr class="ligne-top-menu-gestion-donnee" />
                   <a href=""
-                     tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-decrire-une-inscription?inscriptionPk=${inscriptionPk}"
+                     tal:attributes="href string:${context/portal_url}/admin-decrire-une-inscription?inscriptionPk=${inscriptionPk}"
                      class="bouton">
                         Voir le détail...</a>
                 </div>

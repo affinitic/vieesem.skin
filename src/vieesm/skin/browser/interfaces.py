@@ -4,13 +4,13 @@ from plone.theme.interfaces import IDefaultPloneLayer
 from zope.interface import Interface
 
 
-class IVieesmTheme(IDefaultPloneLayer):
+class IVieesemTheme(IDefaultPloneLayer):
     """
     Theme for vie-esem
     """
 
 
-class IManageVieesm(Interface):
+class IManageVieesem(Interface):
     """
     outils communs
     """

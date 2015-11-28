@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
 <layers>
-    <layer name="vieesm.skin"
-           interface="vieesm.skin.interfaces.IVieesmTheme" />
+    <layer name="vieesem.skin"
+           interface="vieesem.skin.interfaces.IVieesemTheme" />
 </layers>

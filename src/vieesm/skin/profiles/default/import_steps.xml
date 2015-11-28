@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <import-steps>
-  <import-step id="vieesm.skin.setup"
+  <import-step id="vieesem.skin.setup"
                version="20151013-01"
-               handler="vieesm.skin.setuphandler.setupSite"
-               title="VIEESM skin : setup portal">
+               handler="vieesem.skin.setuphandler.setupSite"
+               title="vieesem skin : setup portal">
     <dependency step="skins" />
-    Setup VIEESM portal.
+    Setup vieesem portal.
   </import-step>
 </import-steps>

@@ -3,13 +3,13 @@
      -->
 
 <object name="portal_javascripts">
-    
+
     <javascript cacheable="True"
                 compression="safe"
                 cookable="True"
                 enabled="True"
                 expression=""
-                id="++resource++vieesm.js"
+                id="++resource++vieesem.js"
                 inline="False"/>
 
     <javascript cacheable="True"

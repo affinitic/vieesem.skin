@@ -2,27 +2,27 @@
    xmlns="http://namespaces.zope.org/zope"
    xmlns:plone="http://namespaces.plone.org/plone"
    xmlns:browser="http://namespaces.zope.org/browser"
-   i18n_domain="vieesm.skin">
+   i18n_domain="vieesem.skin">
 
     <!-- 'vieesem skin' Zope 3 browser layer -->
     <interface
-        interface=".interfaces.IVieesmTheme"
+        interface=".interfaces.IVieesemTheme"
         type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="vieesm skin"
+        name="vieesem skin"
         />
 
 <!-- js -->
     <browser:resource
-        name="vieesm.js"
-        file="js/vieesm.js"
+        name="vieesem.js"
+        file="js/vieesem.js"
         />
 
 <!-- manage vieesem -->
     <browser:page
         for="*"
-        name="manageVieesm"
-        class=".ManageVieesm.ManageVieesm"
-        allowed_interface=".interfaces.IManageVieesm"
+        name="ManageVieesem"
+        class=".ManageVieesem.ManageVieesem"
+        allowed_interface=".interfaces.IManageVieesem"
         permission="zope.Public"
         />
 

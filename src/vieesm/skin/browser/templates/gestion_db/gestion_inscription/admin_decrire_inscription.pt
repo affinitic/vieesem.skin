@@ -129,14 +129,18 @@
                             </tal:boucle>
                         </tal:block>
                     </li>
-
+                    <li>
+                        <span class="donnee-etiquette">Organisme :</span>
+                        <span tal:content="inscription/form_ins_organisme"
+                              class="donnee-db" />
+                    </li>
                 </ul>
             </div>
         </tal:boucle>
     </fieldset>
     <div id="retour">
         <a href=""
-           tal:attributes="href string:${context/portal_url}/formations/chercher-une-inscription">
+           tal:attributes="href string:${context/portal_url}/admin-chercher-une-inscription">
            retour à la recherche</a>
     </div>
 

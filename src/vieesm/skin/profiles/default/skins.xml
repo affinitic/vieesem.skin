@@ -2,26 +2,26 @@
 <object name="portal_skins"
         allow_any="False"
         cookie_persistence="False"
-        default_skin="Theme package for VIEESM website">
+        default_skin="Theme package for vieesem website">
 
-    <object name="vieesm_skin_images"
+    <object name="vieesem_skin_images"
             meta_type="Filesystem Directory View"
-            directory="vieesm.skin:skins/vieesm_skin_images"/>
-    <object name="vieesm_skin_templates"
+            directory="vieesem.skin:skins/vieesem_skin_images"/>
+    <object name="vieesem_skin_templates"
             meta_type="Filesystem Directory View"
-            directory="vieesm.skin:skins/vieesm_skin_templates"/>
-    <object name="vieesm_skin_style"
+            directory="vieesem.skin:skins/vieesem_skin_templates"/>
+    <object name="vieesem_skin_style"
             meta_type="Filesystem Directory View"
-            directory="vieesm.skin:skins/vieesm_skin_style"/>
+            directory="vieesem.skin:skins/vieesem_skin_style"/>
 
-    <skin-path name="Theme package for VIEESM website"
+    <skin-path name="Theme package for vieesem website"
                based-on="Sunburst Theme">
-        <layer name="vieesm_skin_images"
+        <layer name="vieesem_skin_images"
                insert-after="custom"/>
-        <layer name="vieesm_skin_templates"
-               insert-after="vieesm_skin_images"/>
-        <layer name="vieesm_skin_style"
-               insert-after="vieesm_skin_templates"/>
+        <layer name="vieesem_skin_templates"
+               insert-after="vieesem_skin_images"/>
+        <layer name="vieesem_skin_style"
+               insert-after="vieesem_skin_templates"/>
 
     </skin-path>
 
