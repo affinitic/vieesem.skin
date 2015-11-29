@@ -3,9 +3,9 @@ import os
 
 version = '0.1'
 
-setup(name='vieesm.skin',
+setup(name='vieesem.skin',
       version=version,
-      description="Theme package for VIEESM website",
+      description="Theme package for VIEESEM website",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -18,11 +18,11 @@ setup(name='vieesm.skin',
       keywords='Affinitic',
       author='Affinitic',
       author_email='info@affinitic.be',
-      url='https://github.com/affinitic/vieesm.skin',
+      url='https://github.com/affinitic/vieesem.skin',
       license='gpl',
       packages=find_packages('src', exclude=['ez_setup']),
       package_dir={'': 'src'},
-      namespace_packages=['vieesm'],
+      namespace_packages=['vieesem'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
