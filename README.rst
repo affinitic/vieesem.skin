@@ -1,7 +1,7 @@
-vieesm.skin
-===================
+vieesem.skin
+============
 
-Theme package for VIEESM website
+Theme package for VIEESEM website
 
 
 Credits
@@ -13,4 +13,4 @@ This package was developed by `Affinitic team <https://github/affinitic>`_.
    :alt: Affinitic website
    :target: http://www.affinitic.be
 
-``vieesm.skin`` is licensed under GNU General Public License, version 2.
+``vieesem.skin`` is licensed under GNU General Public License, version 2.
