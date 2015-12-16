@@ -102,6 +102,7 @@
             <div class="formInput">
                 <label for="formulaireInscriptionDateNaissance">Date de naissance :</label>
                 <span tal:replace="structure here/calendrier" />
+
             </div>
 
             <div class="formInput">
@@ -304,6 +305,9 @@
             </div>
 
             <div class="formControls">
+                <input type="hidden"
+                       name="inscriptionFormationOrganisme"
+                       value="vie-esem" />
                 <input type="hidden"
                        name="operation"
                        value="insert" />

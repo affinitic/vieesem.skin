@@ -58,6 +58,14 @@
                     <option value="complete"> Formation complète </option>
                 </select>
             </div>
+            <div class="formInput">
+                <label for="formationOrganisme">Organisme :</label>
+                <select name="formationOrganisme"
+                        id="formationOrganisme">
+                    <option value="cenforsoc"> Cenforsoc </option>
+                    <option value="vie-esem"> Vie-Esem </option>
+                </select>
+            </div>
 
             <div class="formControls" align="center">
                 <input type="hidden"

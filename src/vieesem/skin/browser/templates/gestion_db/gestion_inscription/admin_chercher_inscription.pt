@@ -58,6 +58,8 @@
                             <option value=""
                                     tal:attributes="value python:nom[0]">
                                 <span tal:content="python: nom[0]" />
+                                &nbsp; - &nbsp;
+                                [<span tal:content="python: nom[1]" />]
                             </option>
                         </tal:boucle>
                     </select>

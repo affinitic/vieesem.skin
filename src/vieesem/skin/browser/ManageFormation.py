@@ -128,7 +128,7 @@ class ManageFormation(BrowserView):
         query = session.query(FormationTable)
         query = query.filter(FormationTable.form_titre.ilike("%%%s%%" % searchString))
         query = query.order_by(FormationTable.form_titre)
-        formation = ["%s" % (elem.form_titre) for elem in query.all()]
+        formation = ["%s [%s]" % (elem.form_titre, elem.form_organisme) for elem in query.all()]
         return formation
 
     def getSearchingFormation(self, formationPk=None, formationTitre=None):
@@ -302,7 +302,6 @@ class ManageFormation(BrowserView):
                 listeFormations = listeFormations + formationTitre + ' - '
             lf = listeFormations.encode('ascii', 'ignore')
 
-
             wrapper = getSAWrapper('cenforsoc')
             session = wrapper.session
             insertAuteur = wrapper.getMapper('formation_inscription')
@@ -387,7 +386,7 @@ class ManageFormation(BrowserView):
                          L'équipe Vie-Esem.
                          """ % (inscriptionFormationPrenom, inscriptionFormationNom, lf)
 
-            cenforsocTools = getMultiAdapter((self.context, self.request), name="manageVieesem")
+            cenforsocTools = getMultiAdapter((self.context, self.request), name="ManageVieesem")
             cenforsocTools.sendMailTovieesem(sujet, message)
             cenforsocTools.sendMailForInscription(sujetInscrit, messageInscrit, inscriptionFormationEmail)
 
@@ -447,7 +446,7 @@ class ManageFormation(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         InscriptionFormationTable = wrapper.getMapper('formation_inscription')
-        allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom)], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
+        allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom), InscriptionFormationTable.form_ins_organisme], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
         return allInscriptions
 
     def getInscriptionByPk(self, inscriptionPk):
@@ -473,7 +472,7 @@ class ManageFormation(BrowserView):
         InscriptionFormationTable = wrapper.getMapper('formation_inscription')
         query = session.query(InscriptionFormationTable)
         query = query.filter(InscriptionFormationTable.form_ins_nom.ilike("%%%s%%" % searchString))
-        inscription = ["%s" % (elem.form_ins_nom) for elem in query.all()]
+        inscription = ["%s    [%s]" % (elem.form_ins_nom, elem.form_ins_organisme) for elem in query.all()]
         return inscription
 
     def getSearchingInscriptionFormation(self, isncriptionFormationPk=None, inscriptionNom=None):

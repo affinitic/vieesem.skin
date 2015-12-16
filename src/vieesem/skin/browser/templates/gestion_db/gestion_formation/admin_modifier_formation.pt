@@ -81,7 +81,20 @@
                 </div>
                 <div class="formInput">
                     <label for="formationOrganisme">Organisme :</label>
-                    <span tal:content="formation/form_organisme" />
+                    <select name="formationOrganisme"
+                            id="formationOrganisme">
+                        <option> ... </option>
+                        <span tal:condition="python: formation.form_organisme=='cenforsoc'">
+                            <option value="cenforsoc"
+                                    selected="selected"> Cenforsoc </option>
+                            <option value="vie-esem"> Vie-Esem </option>
+                        </span>
+                        <span tal:condition="python: formation.form_organisme=='vie-esem'">
+                            <option value="cenforsoc"> Cenforsoc </option>
+                            <option value="vie-esem"
+                                    selected="selected"> Vie-Esem </option>
+                        </span>
+                    </select>
                 </div>
 
                 <div class="formControls">
@@ -89,9 +102,6 @@
                            name="formationPk"
                            value=""
                            tal:attributes="value formation/form_pk" />
-                    <input type="hidden"
-                           name="formationOrganisme"
-                           value="vie-esem" />
                     <input class="context"
                            type="submit"
                            name="submit"

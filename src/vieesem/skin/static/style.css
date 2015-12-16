@@ -565,6 +565,10 @@ border-bottom:1px dotted #777;
 font-weight:bold;
 }
 
+.nom-capitalize{
+text-transform:capitalize;
+}
+
 .rouge{
 color:#ac2723;
 }
