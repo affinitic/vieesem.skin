@@ -11,6 +11,9 @@ from interfaces import IManageFormation
 
 
 class ManageFormation(BrowserView):
+    """
+    gestion des formations de Vie-Esem
+    """
     implements(IManageFormation)
 
     def getAllFormations(self):
@@ -29,7 +32,7 @@ class ManageFormation(BrowserView):
     def getAllFormationsByOrganisme(self, organisme):
         """
         table pg formation
-        recuperation de toutes les formations
+        recuperation de toutes les formations selon un organimse cenforsoc ou vie-esem
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
@@ -133,7 +136,7 @@ class ManageFormation(BrowserView):
 
     def getSearchingFormation(self, formationPk=None, formationTitre=None):
         """
-        table pg formation@
+        table pg formation
         recuperation de la formation selon la pk ou selon le titre
         """
         fields = self.request.form
@@ -197,8 +200,8 @@ class ManageFormation(BrowserView):
 
     def updateFormation(self):
         """
-        table pg auteur
-        mise a jour d'un item auteur
+        table pg formation
+        mise a jour d'un item formation
         """
         fields = self.request.form
 
@@ -446,6 +449,16 @@ class ManageFormation(BrowserView):
         allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom), InscriptionFormationTable.form_ins_organisme], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
         return allInscriptions
 
+    def getAllDistinctInscriptionsByOrganisme(self, organisme):
+        """
+        table pg inscription
+        recuperation de toutes les inscriptionss
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        InscriptionFormationTable = wrapper.getMapper('formation_inscription')
+        allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom), InscriptionFormationTable.form_ins_organisme], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
+        return allInscriptions
+
     def getInscriptionByPk(self, inscriptionPk):
         """
         table pg inscription
@@ -469,7 +482,7 @@ class ManageFormation(BrowserView):
         InscriptionFormationTable = wrapper.getMapper('formation_inscription')
         query = session.query(InscriptionFormationTable)
         query = query.filter(InscriptionFormationTable.form_ins_nom.ilike("%%%s%%" % searchString))
-        inscription = ["%s    [%s]" % (elem.form_ins_nom, elem.form_ins_organisme) for elem in query.all()]
+        inscription = ["%s" % (elem.form_ins_nom) for elem in query.all()]
         return inscription
 
     def getSearchingInscriptionFormation(self, isncriptionFormationPk=None, inscriptionNom=None):
