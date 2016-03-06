@@ -51,17 +51,29 @@
             <form action="admin-decrire-une-inscription"
                   method="post">
                 <div class="div_question">
-                    <select tal:define="inscriptions python:view.getAllDistinctInscriptions()"
-                            name="inscriptionNom">
-                        <option>...</option>
-                        <tal:boucle tal:repeat="nom inscriptions">
-                            <option value=""
-                                    tal:attributes="value python:nom[0]">
-                                <span tal:content="python: nom[0]" />
-                                &nbsp; - &nbsp;
-                                [<span tal:content="python: nom[1]" />]
-                            </option>
-                        </tal:boucle>
+                    <select name="inscriptionNom">
+                        <tal:block tal:define="inscriptions python:view.getAllDistinctInscriptionsByOrganisme('vie-esem')">
+                            <option>...</option>
+                            <optgroup label="VIE-ESEM">
+                                <tal:boucle tal:repeat="nom inscriptions">
+                                    <option value=""
+                                            tal:attributes="value nom/form_ins_nom">
+                                        <span tal:content="nom/form_ins_nom" />
+                                    </option>
+                                </tal:boucle>
+                            </optgroup>
+                        </tal:block>
+                        <tal:block tal:define="inscriptions python:view.getAllDistinctInscriptionsByOrganisme('cenforsoc')">
+                            <option>...</option>
+                            <optgroup label="CENFORSOC">
+                                <tal:boucle tal:repeat="nom inscriptions">
+                                    <option value=""
+                                            tal:attributes="value nom/form_ins_nom">
+                                        <span tal:content="nom/form_ins_nom" />
+                                    </option>
+                                </tal:boucle>
+                            </optgroup>
+                        </tal:block>
                     </select>
                 </div>
                 <div class="formControls" align="center">
