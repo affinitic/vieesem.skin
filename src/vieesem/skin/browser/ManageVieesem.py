@@ -92,8 +92,8 @@ class ManageVieesem(BrowserView):
         mailer.setSubject(sujet)
         mailer.setRecipients("alain.meurant@affinitic.be")
         mail = message
-        print mail
-        #mailer.sendAllMail(mail)
+        #print mail
+        mailer.sendAllMail(mail)
 
     def sendMailTovieesem(self, sujet, message):
         """
@@ -106,8 +106,8 @@ class ManageVieesem(BrowserView):
         recipients = "%s, %s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', 'riet.vandeputte@fgtb.be', 'adriana.muccilli@fgtb.be')
         mailer.setRecipients(recipients)
         mail = message
-        print mail
-        #mailer.sendAllMail(mail)
+        #print mail
+        mailer.sendAllMail(mail)
 
     def sendMailForInscription(self, sujetInscrit, messageInscrit, emailInscrit):
         """
@@ -118,8 +118,8 @@ class ManageVieesem(BrowserView):
         recipients = "%s, %s, %s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', 'riet.vandeputte@fgtb.be', 'adriana.muccilli@fgtb.be', emailInscrit)
         mailer.setRecipients(recipients)
         mail = messageInscrit
-        print mail
-        #mailer.sendAllMail(mail)
+        #print mail
+        mailer.sendAllMail(mail)
 
     def getTimeStamp(self):
         timeStamp = datetime.datetime.now()
