@@ -128,16 +128,13 @@ class ManageFormation(BrowserView):
         query = session.query(FormationTable)
         query = query.filter(FormationTable.form_titre.ilike("%%%s%%" % searchString))
         query = query.order_by(FormationTable.form_titre)
-        formation = ["%s [%s]" % (elem.form_titre, elem.form_organisme) for elem in query.all()]
+        formation = ["%s" % (elem.form_titre) for elem in query.all()]
         return formation
 
     def getSearchingFormation(self, formationPk=None, formationTitre=None):
         """
-        table pg periodique
-        recuperation du periodique selon la pk
-        la pk peut arriver via le form en hidden ou via un lien construit,
-         (cas du listing de resultat de moteur de recherche)
-        je teste si la pk arrive par param, si pas je prends celle du form
+        table pg formation@
+        recuperation de la formation selon la pk ou selon le titre
         """
         fields = self.request.form
         if not formationTitre:
