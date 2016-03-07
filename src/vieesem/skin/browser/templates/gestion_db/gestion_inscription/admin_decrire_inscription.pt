@@ -122,7 +122,10 @@
                             Formations déjà suivies à CENFORSOC et en centrales professionnelles
                         </span>
                         <tal:block tal:define="formations python:view.getFormationForInscription(inscription.form_ins_pk)">
+                            <br />
                             <tal:boucle tal:repeat="formation formations">
+                                &nbsp;&nbsp;
+                                <span class="donnee-etiquette">&diams; </span>
                                 <span tal:content="formation/form_titre"
                                       class="donnee-db" />
                                 <br />

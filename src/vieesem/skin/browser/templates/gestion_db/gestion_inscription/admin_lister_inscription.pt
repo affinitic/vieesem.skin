@@ -15,34 +15,34 @@
         Gestion de la base de donn&eacute;es des inscriptions aux formations
     <fieldset>
         <legend class="legende">Lister les inscriptions pour l'organisme <span class="gras">VIE-ESEM</span></legend>
-          <tal:requete tal:define="Formations python:view.getAllInscriptionsByOrganisme('vie-esem')">
-            <tal:boucle tal:repeat="formation Formations">
-                <div tal:define="inscriptionPk formation/form_ins_pk"
+          <tal:requete tal:define="Inscriptions python:view.getAllInscriptionsByOrganisme('vie-esem')">
+            <tal:boucle tal:repeat="inscription Inscriptions">
+                <div tal:define="inscriptionPk inscription/form_ins_pk"
                      class="boite-resultat">
                   <ul>
                       <li>
                           <span class="donnee-etiquette">Nom</span> :
-                          <span tal:content="formation/form_ins_nom"
+                          <span tal:content="inscription/form_ins_nom"
                                 class="donnee-db" />
                       </li>
                       <li>
                           <span class="donnee-etiquette">Prénom</span> :
-                          <span tal:content="formation/form_ins_prenom"
+                          <span tal:content="inscription/form_ins_prenom"
                                 class="donnee-db" />
                       </li>
                       <li>
                           <span class="donnee-etiquette">Date d'inscription</span> :
-                          <span tal:content="python: formation.form_ins_date.strftime('%d-%m-%Y')"
+                          <span tal:content="python: inscription.form_ins_date.strftime('%d-%m-%Y')"
                                 class="donnee-db" />
                       </li>
                       <li>
                           <span class="donnee-etiquette">Email</span> :
-                          <span tal:content="formation/form_ins_email"
+                          <span tal:content="inscription/form_ins_email"
                                 class="donnee-db" />
                       </li>
                       <li>
                           <span  class="donnee-etiquette">Organisme</span>
-                          <span tal:content="formation/form_ins_organisme"
+                          <span tal:content="inscription/form_ins_organisme"
                                 class="donnee-db" />
                       </li>
                       <!--
@@ -62,37 +62,37 @@
             </tal:boucle>
         </tal:requete>
    </fieldset>
-   
+
    <fieldset>
         <legend class="legende">Lister les inscriptions pour l'organisme <span class="gras">CENFORSOC</span></legend>
-          <tal:requete tal:define="Formations python:view.getAllInscriptionsByOrganisme('cenforsoc')">
-            <tal:boucle tal:repeat="formation Formations">
-                <div tal:define="inscriptionPk formation/form_ins_pk"
+          <tal:requete tal:define="Inscriptions python:view.getAllInscriptionsByOrganisme('cenforsoc')">
+            <tal:boucle tal:repeat="inscription Inscriptions">
+                <div tal:define="inscriptionPk inscription/form_ins_pk"
                      class="boite-resultat">
                   <ul>
                       <li>
                           <span class="donnee-etiquette">Nom</span> :
-                          <span tal:content="formation/form_ins_nom"
+                          <span tal:content="inscription/form_ins_nom"
                                 class="donnee-db" />
                       </li>
                       <li>
                           <span class="donnee-etiquette">Prénom</span> :
-                          <span tal:content="formation/form_ins_prenom"
+                          <span tal:content="inscription/form_ins_prenom"
                                 class="donnee-db" />
                       </li>
                       <li>
                           <span class="donnee-etiquette">Date d'inscription</span> :
-                          <span tal:content="python: formation.form_ins_date.strftime('%d-%m-%Y')"
+                          <span tal:content="python: inscription.form_ins_date.strftime('%d-%m-%Y')"
                                 class="donnee-db" />
                       </li>
                       <li>
                           <span class="donnee-etiquette">Email</span> :
-                          <span tal:content="formation/form_ins_email"
+                          <span tal:content="inscription/form_ins_email"
                                 class="donnee-db" />
                       </li>
                       <li>
                           <span class="donnee-etiquette">Organisme</span>
-                          <span tal:content="formation/form_ins_organisme"
+                          <span tal:content="inscription/form_ins_organisme"
                                 class="donnee-db" />
                       </li>
                       <!--
