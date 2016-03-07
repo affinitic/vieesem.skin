@@ -46,6 +46,43 @@
                 </div>
             </form>
         </div>
+        <div class="formulaire">
+            <h2>A partir de la liste de toutes les formations</h2>
+            <form action="admin-resultat-recherche-formation"
+                  method="post">
+                <div class="div_question">
+                    <select name="formationTitre">
+                        <option>...</option>
+                        <tal:block tal:define="formations python:view.getAllFormationsByOrganisme('vie-esem')">
+                            <optgroup label="VIE-ESEM">
+                                <tal:boucle tal:repeat="formation formations">
+                                    <option value=""
+                                            tal:attributes="value formation/form_titre">
+                                        <span tal:content="formation/form_titre" />
+                                    </option>
+                                </tal:boucle>
+                            </optgroup>
+                        </tal:block>
+                        <tal:block tal:define="formations python:view.getAllFormationsByOrganisme('cenforsoc')">
+                            <option>-----------------</option>
+                            <optgroup label="CENFORSOC">
+                                <tal:boucle tal:repeat="formation formations">
+                                    <option value=""
+                                            tal:attributes="value formation/form_titre">
+                                        <span tal:content="formation/form_titre" />
+                                    </option>
+                                </tal:boucle>
+                            </optgroup>
+                        </tal:block>
+                    </select>
+                </div>
+                <div class="formControls" align="center">
+                    <input type="submit"
+                           value="lancer la recherche"
+                           class="search-button" />
+                </div>
+            </form>
+        </div>
     </div>
 </div><!-- div metal-->
 </body>
